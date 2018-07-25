@@ -121,10 +121,6 @@ export default {
         this.signupUser(postBody)
       }
     }
-  },
-  computed: {
-  },
-  mounted () {
   }
 }
 </script>

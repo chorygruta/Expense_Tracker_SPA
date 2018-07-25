@@ -15,7 +15,7 @@ export const state = () => ({
   
 export const actions = {
     async loginUser ({commit}, bodyData) {
-        this.$toast.show('Logging in...', {icon: "fingerprint"})
+        this.$toast.info('Logging in...', {icon: "fingerprint"})
         const auth = await this.$axios.$post('/users/login', bodyData)
         if (auth.success) {
             this.$toast.success('Successfully Logged In', {icon: "done"})
@@ -28,13 +28,15 @@ export const actions = {
             commit('SET_AUTH_LOGIN_STATUS', true)
             commit('SET_AUTH_USER', auth.data.user)
         } else {
-            this.$toast.error('Failed Logging In', {icon: "error_outline"})
+            this.$toast.error('Failed Logging In. Invalid email or password', {icon: "error_outline"})
         }
     },
+    
     async signupUser ({commit}, bodyData) {
+        this.$toast.info('Signing up...', {icon: "fingerprint"})
         const auth = await this.$axios.$post('/users/signup', bodyData)
         if (auth.success) {
-            this.$toast.success('Successfully Logged In', {icon: "done"})
+            this.$toast.success('Successfully Signed Up', {icon: "done"})
             this.$axios.setToken(auth.data.token, 'Bearer')
             // localforage
             setIdToken(auth.data.token)
@@ -44,9 +46,10 @@ export const actions = {
             commit('SET_AUTH_LOGIN_STATUS', true)
             commit('SET_AUTH_USER', auth.data.user)
         } else {
-            this.$toast.error('Failed Signing Up', {icon: "error_outline"})
+            this.$toast.error('Failed Signing Up. ' + auth.error, {icon: "error_outline"})
         }
     },
+
     async logoutUser ({commit}, data) {
         const self = this
         this.$toast.show('Logging out...', {icon: "fingerprint"})
@@ -59,6 +62,7 @@ export const actions = {
             self.$toast.success('Successfully Logged Out', {icon: "done"})
         }, 1000);
     },
+
     async checkAuth ({commit}, data) {
         const isTokenStillValid = await isLoggedIn()
         if (isTokenStillValid) {

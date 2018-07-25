@@ -34,7 +34,7 @@
                     :rules="[rules.required]"
                     slot="activator"
                     v-model="postBody.date"
-                    label="Picker in menu"
+                    label="Date"
                     prepend-icon="event"
                     readonly
                   ></v-text-field>
@@ -164,8 +164,6 @@ export default {
       }
       return array
     }
-  },
-  watch: {
   }
 }
 </script>

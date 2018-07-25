@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'CategoryModal',
@@ -108,10 +108,6 @@ export default {
         message: null
       }
     }
-  },
-  computed: {
-    ...mapGetters([
-    ])
   }
 }
 </script>

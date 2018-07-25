@@ -55,8 +55,8 @@ module.exports = {
   ],
   // Toast module configuration
   toast: {
-    position: 'top-right',
-    duration: 2000
+    position: 'bottom-center',
+    duration: 3000
   },
   /*
   ** Axios module configuration
@@ -68,27 +68,6 @@ module.exports = {
     credentials: false
     // See https://github.com/nuxt-community/axios-module#options
   },
-  /* auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: '/users/login', method: 'post', propertyName: 'data.token' },
-          logout: false,
-          user: true
-        },
-        tokenRequired: true,
-        tokenType: 'bearer',
-      }
-    },
-    redirect: {
-      login: '/auth',
-      logout: '/auth'
-    },
-    watchLoggedIn: true,
-    cookie: true,
-    resetOnError: false,
-    localStorage: true
-  }, */
   router: {
     // middleware: ['authenticated']
   },

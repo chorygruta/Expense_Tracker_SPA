@@ -7,7 +7,7 @@
             <v-icon>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile @click="logoutUser">
@@ -86,7 +86,7 @@
               :search="search"
             >
               <template slot="items" slot-scope="props">
-                <td>{{ props.item.date | formatDate }}</td>
+                <td class="text-xs-left">{{ props.item.date | formatDate }}</td>
                 <td class="text-xs-left">{{ props.item.amount | dollars }}</td>
                 <td class="text-xs-left">{{ props.item._category.name }}</td>
                 <td class="text-xs-left">{{ props.item.description }}</td>
@@ -125,7 +125,6 @@ export default {
   },
   data () {
     return {
-      isLoading: null,
       drawer: false,
       addExpenseModal: false,
       addCategoryModal: false,
@@ -194,8 +193,6 @@ export default {
         this.toolbarIcon = 'menu'
       }
     }
-  },
-  mounted () {
   }
 }
 </script>

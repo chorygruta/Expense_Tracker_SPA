@@ -94,10 +94,6 @@ export default {
       loginUser: 'auth/loginUser',
       checkAuth: 'auth/checkAuth'
     }),
-    logout() {
-      this.$toast.show('Logging out...', {icon: "fingerprint"});
-      this.$auth.logout()
-    },
     login_ButtonAction () {
       if (this.$refs.form.validate()) {
         var postBody = {
@@ -110,10 +106,6 @@ export default {
     signup_buttonAction () {
       this.$router.push('/signup')
     }
-  },
-  computed: {
-  },
-  watch: {
   },
   mounted () {
     console.log('im here @ login.vue')

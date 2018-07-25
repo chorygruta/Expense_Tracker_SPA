@@ -2,19 +2,6 @@ import decode from 'jwt-decode'
 import localforage from 'localforage'
 const ID_TOKEN_KEY = 'id_token'
 
-/* export function requireAuth (to, from, next) {
-  getIdToken().then(value => {
-    if (!isValidJWT(value)) {
-      next({
-        path: '/auth',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  })
-} */
-
 export function ifNotAuthenticated (to, from, next) {
   getIdToken().then(value => {
     if (isValidJWT(value)) {
@@ -69,6 +56,7 @@ export function setIdToken (idToken) {
   localforage.setItem(ID_TOKEN_KEY, idToken)
   decodeIdToken(idToken)
 }
+
 export function lfSaveUser (user) {
   localforage.setItem('user', user)
 }
